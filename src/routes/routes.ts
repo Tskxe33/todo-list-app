@@ -1,3 +1,4 @@
 export const ROUTES = {
-  DASHBOARD: "/",
+  ROOT: "/",
+  DASHBOARD: "/dashboard",
 };

@@ -1,12 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "./routes";
-import DashboradPage from "../pages/DashboradPage";
 import ErrorPage from "../pages/ErrorPage";
+import DashboradPage from "../pages/DashBoardPage";
 const router = createBrowserRouter([
+  {
+    path: ROUTES.ROOT,
+    element: <DashboradPage />,
+  },
   {
     path: ROUTES.DASHBOARD,
     element: <DashboradPage />,
-    errorElement: <ErrorPage />,
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 
