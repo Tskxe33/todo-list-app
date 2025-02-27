@@ -20,7 +20,12 @@ const CreateTaskModal = () => {
       return;
     }
     setTasks([
-      { title: taskTitle, id: tasks.length + 1, completed: false },
+      {
+        title: taskTitle,
+        id: tasks.length + 1,
+        completed: false,
+        dueDate: startDate.toString(),
+      },
       ...tasks,
     ]);
     toggle();
