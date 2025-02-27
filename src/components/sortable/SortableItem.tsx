@@ -2,6 +2,7 @@ import { Todo } from "../../models/todo.model";
 import { FiClock } from "react-icons/fi";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
+import CustomButton from "../CustomButton";
 
 interface Props {
   item: Todo;
@@ -23,16 +24,16 @@ const SortableItem = ({ item, index }: Props) => {
 
         <p className="text-grey">{item.title}</p>
         <div className="flex flex-row gap-1 md:gap-3">
-          <button className="bg-primary rounded-md  px-4 py-2 cursor-pointer hover:bg-primary/80 transition-all duration-300">
-            <p className="text-white font-semibold text-sm md:text-base">
-              Mark as done
-            </p>
-          </button>
-          <button className="bg-danger rounded-md px-4 py-2 cursor-pointer hover:bg-danger/80 transition-all duration-300">
-            <p className="text-white font-semibold text-sm md:text-base">
-              Delete task
-            </p>
-          </button>
+          <CustomButton
+            text="Mark as done"
+            onClick={() => {}}
+            backgroundColor="primary"
+          />
+          <CustomButton
+            text="Delete task"
+            onClick={() => {}}
+            backgroundColor="warning"
+          />
         </div>
       </div>
       <div className="flex flex-row gap-3 items-center">
