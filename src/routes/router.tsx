@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ROUTES } from "./routes";
 import ErrorPage from "../pages/ErrorPage";
-import DashboradPage from "../pages/DashBoardPage";
+import DashboradPage from "../pages/DashboardPage";
 const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,
