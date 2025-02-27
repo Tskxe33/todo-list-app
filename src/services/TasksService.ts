@@ -2,7 +2,7 @@ import { ENDPOINTS } from "../constants/Endpoints";
 import ApiService from "./HttpService";
 import { Todo } from "../models/todo.model";
 
-const TodoService = {
+const TasksService = {
   getAll: async (limit: number = 10) => {
     const res = await ApiService.get<Todo[]>(ENDPOINTS.TODOS, {
       params: {
@@ -13,4 +13,4 @@ const TodoService = {
   },
 };
 
-export default TodoService;
+export default TasksService;
