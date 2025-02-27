@@ -14,19 +14,21 @@ const CreateTaskModal = () => {
   const [taskTitle, setTaskTitle] = useState("");
   const { tasks, setTasks } = useTasksStore();
 
+  const generateRandomID = () => Math.random().toString(36).substring(2, 15);
+
   const handleCreateTask = () => {
     if (!taskTitle) {
       dangerNotification("Please enter a task title");
       return;
     }
     setTasks([
+      ...tasks,
       {
         title: taskTitle,
-        id: tasks.length + 1,
+        id: generateRandomID(),
         completed: false,
         dueDate: startDate.toString(),
       },
-      ...tasks,
     ]);
     toggle();
     successNotification("Task created successfully ✅");

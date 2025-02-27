@@ -4,6 +4,7 @@ import { FaRegCheckSquare } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
 import CustomButton from "../CustomButton";
 import { formatTaskDueDate } from "../../utils/FormatTaskDueDate";
+import { useTasksStore } from "../../stores/TasksStore";
 
 interface Props {
   item: Todo;
@@ -11,6 +12,20 @@ interface Props {
 }
 
 const SortableItem = ({ item, index }: Props) => {
+  const { tasks, setTasks } = useTasksStore();
+
+  const handleMarkAsDone = () => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === item.id ? { ...task, completed: true } : task
+    );
+    setTasks(updatedTasks);
+  };
+
+  const handleDeleteTask = () => {
+    const updatedTasks = tasks.filter((task) => task.id !== item.id);
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="flex flex-col gap-6 w-full bg-white py-6 px-4 border-b border-border">
       <div className="flex flex-row gap-5 items-center justify-between">
@@ -25,14 +40,17 @@ const SortableItem = ({ item, index }: Props) => {
 
         <p className="text-grey">{item.title}</p>
         <div className="flex flex-row gap-1 md:gap-3">
-          <CustomButton
-            text="Mark as done"
-            onClick={() => {}}
-            backgroundColor="primary"
-          />
+          {!item.completed && (
+            <CustomButton
+              text="Mark as done"
+              onClick={handleMarkAsDone}
+              backgroundColor="primary"
+            />
+          )}
+
           <CustomButton
             text="Delete task"
-            onClick={() => {}}
+            onClick={handleDeleteTask}
             backgroundColor="warning"
           />
         </div>
@@ -44,10 +62,12 @@ const SortableItem = ({ item, index }: Props) => {
             {formatTaskDueDate(item.dueDate)}
           </p>
         </div>
-        <div className="flex flex-row gap-1 items-center">
-          <FaRegCheckSquare color="#48bd77" size={24} />
-          <p className="text-dark font-medium text-sm">completed</p>
-        </div>
+        {item.completed && (
+          <div className="flex flex-row gap-1 items-center">
+            <FaRegCheckSquare color="#48bd77" size={24} />
+            <p className="text-dark font-medium text-sm">completed</p>
+          </div>
+        )}
       </div>
     </div>
   );
