@@ -21,6 +21,11 @@ const SortableItem = ({ item, index }: Props) => {
     setTasks(updatedTasks);
   };
 
+  const handleDeleteTask = () => {
+    const updatedTasks = tasks.filter((task) => task.id !== item.id);
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="flex flex-col gap-6 w-full bg-white py-6 px-4 border-b border-border">
       <div className="flex flex-row gap-5 items-center justify-between">
@@ -45,7 +50,7 @@ const SortableItem = ({ item, index }: Props) => {
 
           <CustomButton
             text="Delete task"
-            onClick={() => {}}
+            onClick={handleDeleteTask}
             backgroundColor="warning"
           />
         </div>
