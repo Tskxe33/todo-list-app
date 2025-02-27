@@ -5,6 +5,7 @@ import { MdDragIndicator } from "react-icons/md";
 import CustomButton from "../CustomButton";
 import { formatTaskDueDate } from "../../utils/FormatTaskDueDate";
 import { useTasksStore } from "../../stores/TasksStore";
+import { SortValues } from "../../constants/FilterValues";
 
 interface Props {
   item: Todo;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const SortableItem = ({ item, index }: Props) => {
-  const { tasks, setTasks } = useTasksStore();
+  const { tasks, setTasks, sort } = useTasksStore();
 
   const handleMarkAsDone = () => {
     const updatedTasks = tasks.map((task) =>
@@ -34,11 +35,14 @@ const SortableItem = ({ item, index }: Props) => {
       <div className="flex flex-row gap-5 items-center justify-between">
         <div className="flex flex-row gap-2 items-center">
           <p className="text-dark font-medium text-lg">{index}.</p>
-          <MdDragIndicator
-            size={24}
-            color="#0090ff"
-            className="cursor-grab active:cursor-grabbing handle"
-          />
+
+          {sort === SortValues.ORDER && (
+            <MdDragIndicator
+              size={24}
+              color="#0090ff"
+              className="cursor-grab active:cursor-grabbing handle"
+            />
+          )}
         </div>
 
         <p className="text-grey">{item.title}</p>
