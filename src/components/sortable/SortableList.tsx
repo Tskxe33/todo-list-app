@@ -9,9 +9,14 @@ interface Props {
 
 const SortableList = ({ items, setItems }: Props) => {
   return (
-    <ReactSortable list={items} setList={setItems}>
-      {items.map((item) => (
-        <SortableItem key={item.id} item={item} />
+    <ReactSortable
+      list={items}
+      handle=".handle"
+      setList={setItems}
+      className="flex flex-col gap-6 justify-center items-center"
+    >
+      {items.map((item, index) => (
+        <SortableItem key={item.id} item={item} index={index + 1} />
       ))}
     </ReactSortable>
   );

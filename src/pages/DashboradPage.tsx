@@ -8,7 +8,7 @@ const DashboradPage = () => {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const todos = await TodoService.getAll(10);
+      const todos = await TodoService.getAll(3);
       setTodos(todos);
     };
 
@@ -16,7 +16,7 @@ const DashboradPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center justify-center">
       <SortableList items={todos} setItems={setTodos} />
     </div>
   );
