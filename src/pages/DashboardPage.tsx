@@ -11,8 +11,8 @@ const DashboradPage = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
-        <div>
+      <div className="flex flex-col items-center justify-center ">
+        <div className="w-full sm:w-1/2">
           <ActionButtons />
           {tasks.length ? (
             <SortableList items={tasks} setItems={setTasks} />
