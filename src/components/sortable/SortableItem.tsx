@@ -3,6 +3,7 @@ import { FiClock } from "react-icons/fi";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
 import CustomButton from "../CustomButton";
+import { formatTaskDueDate } from "../../utils/FormatTaskDueDate";
 
 interface Props {
   item: Todo;
@@ -39,7 +40,9 @@ const SortableItem = ({ item, index }: Props) => {
       <div className="flex flex-row gap-3 items-center">
         <div className="flex flex-row gap-1 items-center">
           <FiClock size={24} color="#0090ff" />
-          <p className="text-dark font-medium text-sm">21:00 15/02/2025</p>
+          <p className="text-dark font-medium text-sm">
+            {formatTaskDueDate(item.dueDate)}
+          </p>
         </div>
         <div className="flex flex-row gap-1 items-center">
           <FaRegCheckSquare color="#48bd77" size={24} />
