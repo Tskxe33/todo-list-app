@@ -1,5 +1,25 @@
+import { useEffect, useState } from "react";
+import TodoService from "../services/TodoService";
+import { Todo } from "../models/todo.model";
+import SortableList from "../components/sortable/SortableList";
+
 const DashboradPage = () => {
-  return <div>DashboradPage</div>;
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  useEffect(() => {
+    const fetchTodos = async () => {
+      const todos = await TodoService.getAll(10);
+      setTodos(todos);
+    };
+
+    fetchTodos();
+  }, []);
+
+  return (
+    <div className="flex flex-col">
+      <SortableList items={todos} setItems={setTodos} />
+    </div>
+  );
 };
 
 export default DashboradPage;
