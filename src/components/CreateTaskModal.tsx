@@ -28,6 +28,7 @@ const CreateTaskModal = () => {
         id: generateRandomID(),
         completed: false,
         dueDate: startDate.toString(),
+        order: tasks.length,
       },
     ]);
     toggle();

@@ -8,7 +8,7 @@ const ActionButtons = () => {
   const { toggle } = useModalStore();
 
   return (
-    <div className="flex justify-between mx-2 md:mx-0 my-5">
+    <div className="flex justify-between my-5">
       <CustomButton
         text="Create Task"
         onClick={() => toggle()}
