@@ -23,6 +23,9 @@ const SortableItem = ({ item, index }: Props) => {
 
   const handleDeleteTask = () => {
     const updatedTasks = tasks.filter((task) => task.id !== item.id);
+    updatedTasks.forEach((task, index) => {
+      task.order = index;
+    });
     setTasks(updatedTasks);
   };
 

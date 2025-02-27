@@ -8,16 +8,21 @@ interface Props {
 }
 
 const SortableList = ({ items, setItems }: Props) => {
+  const handleOrderChange = (newState: Todo[]) => {
+    const updatedItems = newState.map((item, index) => ({
+      ...item,
+      order: index,
+    }));
+    setItems(updatedItems);
+  };
+
   return (
     <ReactSortable
       list={items}
       handle=".handle"
-      setList={setItems}
+      setList={handleOrderChange}
       className="flex flex-col gap-6 justify-center items-center"
-      onEnd={(e) =>
-        e.oldIndex !== e.newIndex &&
-        successNotification("Reordered successfully 🎉")
-      }
+      onEnd={() => successNotification("Reordered successfully 🎉")}
     >
       {items.map((item, index) => (
         <SortableItem key={item.id} item={item} index={index + 1} />
