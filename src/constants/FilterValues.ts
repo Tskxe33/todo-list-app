@@ -1,6 +1,7 @@
 export enum FilterValues {
   ALL = "all",
   COMPLETED = "completed",
+  ACTIVE = "active",
 }
 
 export enum SortValues {
@@ -23,6 +24,10 @@ export const filterItems = [
   {
     key: FilterValues.ALL,
     name: "All",
+  },
+  {
+    key: FilterValues.ACTIVE,
+    name: "Active",
   },
 ];
 

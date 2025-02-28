@@ -3,9 +3,10 @@ import { FiClock } from "react-icons/fi";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
 import CustomButton from "../CustomButton";
-import { formatTaskDueDate } from "../../utils/FormatTaskDueDate";
+import { formatTaskDueDate, isTaskInTheFuture } from "../../utils/Dates";
 import { useTasksStore } from "../../stores/TasksStore";
 import { SortValues } from "../../constants/FilterValues";
+import { FiFlag } from "react-icons/fi";
 
 interface Props {
   item: Todo;
@@ -14,6 +15,7 @@ interface Props {
 
 const SortableItem = ({ item, index }: Props) => {
   const { tasks, setTasks, sort } = useTasksStore();
+  const isActive = item.dueDate === null || isTaskInTheFuture(item.dueDate);
 
   const handleMarkAsDone = () => {
     const updatedTasks = tasks.map((task) =>
@@ -63,16 +65,24 @@ const SortableItem = ({ item, index }: Props) => {
         </div>
       </div>
       <div className="flex flex-row gap-3 items-center">
-        <div className="flex flex-row gap-1 items-center">
-          <FiClock size={24} color="#0090ff" />
-          <p className="text-dark font-medium text-sm">
-            {formatTaskDueDate(item.dueDate)}
-          </p>
-        </div>
+        {item.dueDate && (
+          <div className="flex flex-row gap-1 items-center">
+            <FiClock size={24} color="#0090ff" />
+            <p className="text-dark font-medium text-sm">
+              {formatTaskDueDate(item.dueDate)}
+            </p>
+          </div>
+        )}
         {item.completed && (
           <div className="flex flex-row gap-1 items-center">
             <FaRegCheckSquare color="#48bd77" size={24} />
             <p className="text-dark font-medium text-sm">completed</p>
+          </div>
+        )}
+        {isActive && (
+          <div className="flex flex-row gap-1 items-center">
+            <FiFlag color="#ff9141" size={24} />
+            <p className="text-dark font-medium text-sm">active</p>
           </div>
         )}
       </div>

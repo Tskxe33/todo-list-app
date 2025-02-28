@@ -4,36 +4,14 @@ import { randomPlaceholder } from "../utils/TaskRandomPlaceholder";
 import CustomButton from "./CustomButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useTasksStore } from "../stores/TasksStore";
-import successNotification from "../utils/toastify/success";
-import dangerNotification from "../utils/toastify/danger";
+import { getMinDateAsTomorrow } from "../utils/Dates";
+import { useCreateTask } from "../hooks/useCreateTask";
 
 const CreateTaskModal = () => {
-  const { toggle } = useModalStore();
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(null);
   const [taskTitle, setTaskTitle] = useState("");
-  const { tasks, setTasks } = useTasksStore();
-
-  const generateRandomID = () => Math.random().toString(36).substring(2, 15);
-
-  const handleCreateTask = () => {
-    if (!taskTitle) {
-      dangerNotification("Please enter a task title");
-      return;
-    }
-    setTasks([
-      ...tasks,
-      {
-        title: taskTitle,
-        id: generateRandomID(),
-        completed: false,
-        dueDate: startDate.toString(),
-        order: tasks.length,
-      },
-    ]);
-    toggle();
-    successNotification("Task created successfully ✅");
-  };
+  const { toggle } = useModalStore();
+  const { handleCreateTask } = useCreateTask(taskTitle, startDate);
 
   return (
     <div
@@ -57,7 +35,7 @@ const CreateTaskModal = () => {
               htmlFor="task-title"
               className="text-grey-dark font-medium text-sm"
             >
-              Task Title
+              <span className="text-danger">*</span>Task Title
             </label>
             <input
               id="task-title"
@@ -73,13 +51,18 @@ const CreateTaskModal = () => {
               htmlFor="task-title"
               className="text-grey-dark font-medium text-sm"
             >
-              Due Date
+              Due Date (optional)
             </label>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date || new Date())}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()}
+              onChange={(date) => setStartDate(date || null)}
+              dateFormat="dd/MM/yyyy HH:mm"
+              showTimeSelect
+              timeFormat="HH:mm"
+              isClearable
+              placeholderText="28/02/2025 10:00"
+              shouldCloseOnSelect={false}
+              minDate={getMinDateAsTomorrow()}
               className="border-border border-1 rounded-md p-4 w-full focus:outline-none text-grey-dark cursor-pointer"
             />
           </div>

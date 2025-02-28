@@ -59,9 +59,12 @@ const DashboradPage = () => {
         </div>
 
         {renderContent()}
-        <p className="text-xs text-gray-400 mt-1">
-          Only asc order is available for ordering
-        </p>
+
+        {tasks.length > 0 && filteredTasks.length > 0 && (
+          <p className="text-xs text-gray-400 mt-1">
+            ⚠ Only order ascending is available for ordering
+          </p>
+        )}
       </div>
       {isOpen && <CreateTaskModal />}
     </div>
