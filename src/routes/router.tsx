@@ -4,15 +4,26 @@ import ErrorPage from "../pages/ErrorPage";
 import DashboradPage from "../pages/DashboardPage";
 import MainLayout from "../layouts/MainLayout";
 import LoginPage from "../pages/auth/LoginPage";
+import ProtectedRoute from "./ProtectedRoute";
+import AuthLayout from "../layouts/AuthLayout";
 
 const router = createBrowserRouter([
   {
-    path: ROUTES.LOGIN,
-    element: <LoginPage />,
-    index: true,
+    element: <AuthLayout />,
+    children: [
+      {
+        path: ROUTES.LOGIN,
+        element: <LoginPage />,
+        index: true,
+      },
+    ],
   },
   {
-    element: <MainLayout />,
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: ROUTES.ROOT,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { isValidEmail } from "../utils/regex";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../stores/UserStore";
 
 type ErrorType = "required" | "invalid" | null;
 
@@ -12,6 +13,7 @@ export const useLoginUser = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState<ErrorType>(null);
   const [passwordError, setPasswordError] = useState<ErrorType>(null);
+  const { setIsLoggedIn } = useUserStore();
   const isValidCredentials =
     email === "petro@dev.com" && password === "password123";
 
@@ -36,6 +38,7 @@ export const useLoginUser = () => {
 
     if (isValidCredentials) {
       navigate("/dashboard");
+      setIsLoggedIn(true);
     } else {
       setEmailError("invalid");
       setPasswordError("invalid");

@@ -15,7 +15,7 @@ const CreateTaskModal = () => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/30 flex items-center justify-center"
+      className="fixed inset-0 bg-black/30 flex items-center justify-center z-20"
       onClick={toggle}
     >
       <div
