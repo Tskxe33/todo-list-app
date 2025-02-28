@@ -33,9 +33,7 @@ const SortableItem = ({ item, index }: Props) => {
             )}
           </div>
 
-          <p className="text-grey bg-amber-400 text-start w-full">
-            {item.title}
-          </p>
+          <p className="text-grey  text-start w-full">{item.title}</p>
         </div>
         <SortableItemActions item={item} />
       </div>
