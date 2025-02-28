@@ -7,7 +7,7 @@ import { useConfirmationModalStore } from "../stores/ConfirmationModalStore";
 import { useCloseConfirmationModal } from "../hooks/useCloseConfirmationModal";
 
 const ActionButtons = () => {
-  const { setTasks } = useTasksStore();
+  const { setTasks, tasks } = useTasksStore();
   const { toggle } = useCreateTaskModalStore();
   const { toggleConfirmationModal } = useConfirmationModalStore();
   const { handleCloseModal } = useCloseConfirmationModal();
@@ -36,6 +36,7 @@ const ActionButtons = () => {
         backgroundColor="primary"
       />
       <CustomButton
+        disabled={!tasks.length}
         text="Delete All Tasks"
         onClick={handleOpenConfirmationModal}
         backgroundColor="danger"
