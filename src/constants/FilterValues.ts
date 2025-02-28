@@ -18,16 +18,16 @@ export type FilterItem = {
 
 export const filterItems = [
   {
-    key: FilterValues.COMPLETED,
-    name: "Completed",
-  },
-  {
     key: FilterValues.ALL,
     name: "All",
   },
   {
     key: FilterValues.ACTIVE,
     name: "Active",
+  },
+  {
+    key: FilterValues.COMPLETED,
+    name: "Completed",
   },
 ];
 
