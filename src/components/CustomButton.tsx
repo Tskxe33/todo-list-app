@@ -5,9 +5,16 @@ interface Props {
   onClick: () => void;
   backgroundColor?: string;
   icon?: ReactNode;
+  buttonClassName?: string;
 }
 
-const CustomButton = ({ text, onClick, backgroundColor, icon }: Props) => {
+const CustomButton = ({
+  text,
+  onClick,
+  backgroundColor,
+  icon,
+  buttonClassName,
+}: Props) => {
   const getBackgroundColor = () => {
     switch (backgroundColor) {
       case "primary":
@@ -26,7 +33,7 @@ const CustomButton = ({ text, onClick, backgroundColor, icon }: Props) => {
   return (
     <button
       onClick={onClick}
-      className={`rounded-md  px-4 py-2 cursor-pointer transition-all duration-300 flex flex-row items-center gap-1 ${getBackgroundColor()}`}
+      className={`rounded-md  px-4 py-2 cursor-pointer transition-all duration-300 flex flex-row items-center gap-1 justify-center ${getBackgroundColor()} ${buttonClassName}`}
     >
       <p className="text-white font-semibold text-sm md:text-base">{text}</p>
       {icon}

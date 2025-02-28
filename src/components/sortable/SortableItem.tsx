@@ -2,11 +2,11 @@ import { Todo } from "../../models/todo.model";
 import { FiClock } from "react-icons/fi";
 import { FaRegCheckSquare } from "react-icons/fa";
 import { MdDragIndicator } from "react-icons/md";
-import CustomButton from "../CustomButton";
 import { formatTaskDueDate, isTaskInTheFuture } from "../../utils/Dates";
 import { useTasksStore } from "../../stores/TasksStore";
 import { SortValues } from "../../constants/FilterValues";
 import { FiFlag } from "react-icons/fi";
+import SortableItemActions from "./SortableItemActions";
 
 interface Props {
   item: Todo;
@@ -14,23 +14,8 @@ interface Props {
 }
 
 const SortableItem = ({ item, index }: Props) => {
-  const { tasks, setTasks, sort } = useTasksStore();
+  const { sort } = useTasksStore();
   const isActive = item.dueDate === null || isTaskInTheFuture(item.dueDate);
-
-  const handleMarkAsDone = () => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === item.id ? { ...task, completed: true } : task
-    );
-    setTasks(updatedTasks);
-  };
-
-  const handleDeleteTask = () => {
-    const updatedTasks = tasks.filter((task) => task.id !== item.id);
-    updatedTasks.forEach((task, index) => {
-      task.order = index;
-    });
-    setTasks(updatedTasks);
-  };
 
   return (
     <div className="flex flex-col gap-6 w-full bg-white py-6 px-4 border-b border-border">
@@ -48,21 +33,7 @@ const SortableItem = ({ item, index }: Props) => {
         </div>
 
         <p className="text-grey">{item.title}</p>
-        <div className="flex flex-row gap-1 md:gap-3">
-          {!item.completed && (
-            <CustomButton
-              text="Mark as done"
-              onClick={handleMarkAsDone}
-              backgroundColor="primary"
-            />
-          )}
-
-          <CustomButton
-            text="Delete task"
-            onClick={handleDeleteTask}
-            backgroundColor="warning"
-          />
-        </div>
+        <SortableItemActions item={item} />
       </div>
       <div className="flex flex-row gap-3 items-center">
         {item.dueDate && (

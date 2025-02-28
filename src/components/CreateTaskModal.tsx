@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useModalStore } from "../stores/ModalStore";
+import { useCreateTaskModalStore } from "../stores/CreateTaskModalStore";
 import { randomPlaceholder } from "../utils/TaskRandomPlaceholder";
 import CustomButton from "./CustomButton";
 import DatePicker from "react-datepicker";
@@ -10,7 +10,7 @@ import { useCreateTask } from "../hooks/useCreateTask";
 const CreateTaskModal = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [taskTitle, setTaskTitle] = useState("");
-  const { toggle } = useModalStore();
+  const { toggle } = useCreateTaskModalStore();
   const { handleCreateTask } = useCreateTask(taskTitle, startDate);
 
   return (

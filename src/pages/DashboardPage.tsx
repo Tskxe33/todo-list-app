@@ -2,19 +2,21 @@ import ActionButtons from "../components/ActionButtons";
 import CreateTaskModal from "../components/CreateTaskModal";
 import NoTasks from "../components/NoTasks";
 import SortableList from "../components/sortable/SortableList";
-import { useModalStore } from "../stores/ModalStore";
+import { useCreateTaskModalStore } from "../stores/CreateTaskModalStore";
 import { useTasksStore } from "../stores/TasksStore";
 import FilterDropDown from "../components/FilterDropDown";
 import { IoFilterOutline } from "react-icons/io5";
 import { FaSort } from "react-icons/fa";
 import { filterItems, sortItems } from "../constants/FilterValues";
 import { useGetFilteredTasks } from "../hooks/useGetFilteredTasks";
+import ConfirmationModal from "../components/ConfirmationModal";
+import { useConfirmationModalStore } from "../stores/ConfirmationModalStore";
 
 const DashboradPage = () => {
   const { tasks, setTasks, filter, setFilter, sort, setSort } = useTasksStore();
-  const { isOpen } = useModalStore();
+  const { isOpen } = useCreateTaskModalStore();
   const { sortedTasks, filteredTasks } = useGetFilteredTasks();
-
+  const { isOpen: isOpenConfirmationModal } = useConfirmationModalStore();
   const renderContent = () => {
     if (!tasks.length) {
       return (
@@ -67,6 +69,7 @@ const DashboradPage = () => {
         )}
       </div>
       {isOpen && <CreateTaskModal />}
+      {isOpenConfirmationModal && <ConfirmationModal />}
     </div>
   );
 };
