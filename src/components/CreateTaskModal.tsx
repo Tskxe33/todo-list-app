@@ -14,10 +14,7 @@ const CreateTaskModal = () => {
   const { handleCreateTask } = useCreateTask(taskTitle, startDate);
 
   return (
-    <div
-      className="fixed inset-0 bg-black/30 flex items-center justify-center z-20"
-      onClick={toggle}
-    >
+    <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-20">
       <div
         className="bg-white p-6 rounded-lg w-96 max-w-full relative gap-8  flex flex-col"
         onClick={(e) => e.stopPropagation()}

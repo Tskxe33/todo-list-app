@@ -1,14 +1,13 @@
 import { useCreateTaskModalStore } from "../stores/CreateTaskModalStore";
 import { useTasksStore } from "../stores/TasksStore";
 import { isTaskInTheFuture } from "../utils/Dates";
+import { generateRandomID } from "../utils/Numbers";
 import dangerNotification from "../utils/toastify/danger";
 import successNotification from "../utils/toastify/success";
 
 export const useCreateTask = (title: string, startDate: Date | null) => {
   const { toggle } = useCreateTaskModalStore();
   const { tasks, setTasks } = useTasksStore();
-
-  const generateRandomID = () => Math.random().toString(36).substring(2, 15);
 
   const handleCreateTask = () => {
     if (!title) {

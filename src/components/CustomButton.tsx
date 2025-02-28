@@ -27,7 +27,7 @@ const CustomButton = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`rounded-md px-4 py-2 cursor-pointer transition-all duration-300 flex flex-row items-center gap-1 justify-center ${getBackgroundColor(
+      className={`h-10 rounded-md px-4 py-2 cursor-pointer transition-all duration-300 flex flex-row items-center gap-1 justify-center ${getBackgroundColor(
         backgroundColor ?? "primary"
       )} ${buttonClassName} ${disabled && "opacity-50"}`}
     >
