@@ -9,3 +9,12 @@ export const formatTaskDueDate = (date: string): string => {
     .toString()
     .padStart(2, "0")}/${dateObj.getFullYear()}`;
 };
+
+export const getMinDateAsTomorrow = () =>
+  new Date(new Date().setDate(new Date().getDate() + 1));
+
+export const isTaskInTheFuture = (dueDate: string): boolean => {
+  const now = new Date();
+  const due = new Date(dueDate);
+  return due > now;
+};
