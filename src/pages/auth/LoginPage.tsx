@@ -16,7 +16,7 @@ const LoginPage = () => {
           <h1 className="text-3xl font-thin text-grey-dark uppercase text-center">
             Login
           </h1>
-          <p className="text-lg text-gray-500 text-center w-full max-w-md">
+          <p className="text-lg text-gray-500 text-center w-full max-w-md font-thin">
             Stay organized and productive. Log in to manage your tasks
             effortlessly!
           </p>
