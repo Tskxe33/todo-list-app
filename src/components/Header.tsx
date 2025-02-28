@@ -3,14 +3,31 @@ import CustomButton from "./CustomButton";
 import Logo from "./Logo";
 import { useUserStore } from "../stores/UserStore";
 import { ROUTES } from "../routes/routes";
+import { useConfirmationModalStore } from "../stores/ConfirmationModalStore";
+import { CiLogout } from "react-icons/ci";
+import { useCloseConfirmationModal } from "../hooks/useCloseConfirmationModal";
 
 const Header = () => {
   const navigate = useNavigate();
   const { setIsLoggedIn } = useUserStore();
+  const { toggleConfirmationModal } = useConfirmationModalStore();
+  const { handleCloseModal } = useCloseConfirmationModal();
 
-  const handleLogout = () => {
+  const handleNavigate = () => {
     setIsLoggedIn(false);
     navigate(ROUTES.LOGIN);
+    handleCloseModal();
+  };
+
+  const handleLogout = () => {
+    toggleConfirmationModal({
+      isOpen: true,
+      message: "Are you sure you want to logout?",
+      modalType: "logout",
+      onConfirm: handleNavigate,
+      icon: <CiLogout size={34} color="var(--color-grey-dark)" />,
+      confirmButtonText: "Logout",
+    });
   };
 
   return (

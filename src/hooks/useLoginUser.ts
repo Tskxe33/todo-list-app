@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { isValidEmail } from "../utils/regex";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/UserStore";
+import { isValidEmail } from "../utils/Regex";
 
 type ErrorType = "required" | "invalid" | null;
 

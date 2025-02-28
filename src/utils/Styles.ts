@@ -8,6 +8,8 @@ export const getBackgroundColor = (color: string) => {
       return "bg-secondary hover:bg-secondary/80";
     case "warning":
       return "bg-warning hover:bg-warning/80";
+    case "grey":
+      return "bg-grey hover:bg-grey/80";
     case "danger":
       return "bg-danger hover:bg-danger/80";
     default:

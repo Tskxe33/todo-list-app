@@ -5,12 +5,16 @@ import { useCreateTaskModalStore } from "../stores/CreateTaskModalStore";
 import { IoWarningOutline } from "react-icons/io5";
 import { useConfirmationModalStore } from "../stores/ConfirmationModalStore";
 import { useCloseConfirmationModal } from "../hooks/useCloseConfirmationModal";
+import { LiaRandomSolid } from "react-icons/lia";
+import { useGenerateTask } from "../hooks/useGenerateTask";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const ActionButtons = () => {
   const { setTasks, tasks } = useTasksStore();
   const { toggle } = useCreateTaskModalStore();
   const { toggleConfirmationModal } = useConfirmationModalStore();
   const { handleCloseModal } = useCloseConfirmationModal();
+  const { getRandomTask, loading } = useGenerateTask();
 
   const handleDeleteAllTasks = () => {
     setTasks([]);
@@ -28,13 +32,30 @@ const ActionButtons = () => {
     });
   };
 
+  const generateTaskIcon = () => {
+    return loading ? (
+      <ClipLoader color="white" size={20} />
+    ) : (
+      <LiaRandomSolid size={20} color="white" />
+    );
+  };
+
   return (
     <div className="flex justify-between my-5">
-      <CustomButton
-        text="Create Task"
-        onClick={() => toggle()}
-        backgroundColor="primary"
-      />
+      <div className="flex flex-col gap-4">
+        <CustomButton
+          text="Create Task"
+          onClick={() => toggle()}
+          backgroundColor="primary"
+        />
+
+        <CustomButton
+          text="Generate Task"
+          onClick={getRandomTask}
+          backgroundColor="grey"
+          icon={generateTaskIcon()}
+        />
+      </div>
       <CustomButton
         disabled={!tasks.length}
         text="Delete All Tasks"
