@@ -37,6 +37,7 @@ const CreateTaskModal = () => {
             <input
               id="task-title"
               type="text"
+              maxLength={105}
               placeholder={randomPlaceholder()}
               className="border-border border-1 rounded-md p-4 w-full focus:outline-none text-grey-dark"
               value={taskTitle}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/UserStore";
 import { isValidEmail } from "../utils/regex";
+import { ROUTES } from "../routes/routes";
 
 type ErrorType = "required" | "invalid" | null;
 
@@ -33,7 +34,7 @@ export const useLoginUser = () => {
     }
 
     if (isValidCredentials) {
-      navigate("/dashboard");
+      navigate(ROUTES.ROOT);
       setIsLoggedIn(true);
     } else {
       setEmailError("invalid");

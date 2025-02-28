@@ -42,7 +42,7 @@ const SortableItemActions = ({ item }: Props) => {
   };
 
   return (
-    <div className="flex flex-row gap-1 md:gap-3">
+    <div className="flex flex-col md:flex-row gap-1 md:gap-3">
       {!item.completed && (
         <CustomButton
           text="Mark as done"
