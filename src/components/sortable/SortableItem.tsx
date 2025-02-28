@@ -19,22 +19,27 @@ const SortableItem = ({ item, index }: Props) => {
 
   return (
     <div className="flex flex-col gap-6 w-full bg-white py-6 px-4 border-b border-border">
-      <div className="flex flex-row gap-5 items-center justify-between">
-        <div className="flex flex-row gap-2 items-center">
-          <p className="text-dark font-medium text-lg">{index}.</p>
+      <div className="flex flex-col sm:flex-row gap-3 justify-between">
+        <div className="flex flex-row gap-1 sm:gap-5 items-center justify-between">
+          <div className="flex flex-row gap-2 items-center">
+            <p className="text-dark font-medium text-lg">{index}.</p>
 
-          {sort === SortValues.ORDER && (
-            <MdDragIndicator
-              size={24}
-              color="#0090ff"
-              className="cursor-grab active:cursor-grabbing handle"
-            />
-          )}
+            {sort === SortValues.ORDER && (
+              <MdDragIndicator
+                size={24}
+                color="#0090ff"
+                className="cursor-grab active:cursor-grabbing handle"
+              />
+            )}
+          </div>
+
+          <p className="text-grey bg-amber-400 text-start w-full">
+            {item.title}
+          </p>
         </div>
-
-        <p className="text-grey">{item.title}</p>
         <SortableItemActions item={item} />
       </div>
+
       <div className="flex flex-row gap-3 items-center">
         {item.dueDate && (
           <div className="flex flex-row gap-1 items-center">

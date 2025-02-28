@@ -41,7 +41,7 @@ const DashboradPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-full sm:w-1/2 px-2 sm:px-0">
+      <div className="w-full lg:w-1/2 px-2 lg:px-0">
         <ActionButtons />
         <div className="flex flex-row items-center gap-2 cursor-pointer py-4">
           <FilterDropDown
