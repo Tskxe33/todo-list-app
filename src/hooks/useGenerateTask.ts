@@ -13,7 +13,13 @@ export const useGenerateTask = () => {
       const response = await TasksService.getRandom();
       setTasks([
         ...tasks,
-        { ...response, completed: false, id: generateRandomID() },
+        {
+          title: response.title,
+          id: generateRandomID(),
+          completed: false,
+          dueDate: null,
+          order: tasks.length,
+        },
       ]);
     } catch (error) {
       console.log(error);
