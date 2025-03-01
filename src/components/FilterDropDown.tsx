@@ -40,13 +40,17 @@ const FilterDropDown = ({
   }, []);
 
   return (
-    <div className="relative inline-block text-left" ref={dropdownRef}>
+    <div
+      className="relative inline-block text-left"
+      ref={dropdownRef}
+      data-testid="filter-dropdown"
+    >
       <div
         className="flex flex-row items-center gap-1"
         onClick={() => setOpen(!open)}
       >
         {icon}
-        <p>{buttonText}</p>
+        <p data-testid="filter-button-text">{buttonText}</p>
       </div>
       {open && (
         <div className="absolute left-0 md:right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden">

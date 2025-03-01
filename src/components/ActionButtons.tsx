@@ -34,14 +34,14 @@ const ActionButtons = () => {
 
   const generateTaskIcon = () => {
     return loading ? (
-      <ClipLoader color="white" size={20} />
+      <ClipLoader color="white" size={20} data-testid="loading-icon" />
     ) : (
-      <LiaRandomSolid size={20} color="white" />
+      <LiaRandomSolid size={20} color="white" data-testid="random-icon" />
     );
   };
 
   return (
-    <div className="flex justify-between my-5">
+    <div className="flex justify-between my-5" data-testid="action-buttons">
       <div className="flex flex-col gap-4">
         <CustomButton
           text="Create Task"

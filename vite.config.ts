@@ -8,6 +8,12 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
+    parallel: true,
+
     setupFiles: "./src/tests/setup.js",
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+    },
   },
 } as UserConfig);

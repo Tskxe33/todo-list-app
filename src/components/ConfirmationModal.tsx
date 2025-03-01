@@ -12,6 +12,7 @@ const ConfirmationModal = () => {
     <div
       className="fixed inset-0 bg-black/30 flex items-center justify-center z-20"
       onClick={handleCloseModal}
+      data-testid="confirmation-modal"
     >
       <div
         className="bg-white p-6 rounded-lg w-full md:w-96 max-w-full relative gap-8 flex flex-col justify-center items-center"
@@ -33,6 +34,7 @@ const ConfirmationModal = () => {
             onClick={onConfirm}
             backgroundColor="danger"
             buttonClassName="w-full"
+            data-testid="confirm-button"
           />
           <CustomButton
             text="Cancel"
