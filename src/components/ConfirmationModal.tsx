@@ -34,6 +34,7 @@ const ConfirmationModal = () => {
             onClick={onConfirm}
             backgroundColor="danger"
             buttonClassName="w-full"
+            data-testid="confirm-button"
           />
           <CustomButton
             text="Cancel"
