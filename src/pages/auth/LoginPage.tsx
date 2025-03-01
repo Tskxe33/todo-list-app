@@ -4,6 +4,7 @@ import Logo from "../../components/Logo";
 const LoginPage = () => {
   return (
     <div
+      data-testid="lp-container"
       className="flex flex-col items-center justify-start md:justify-center h-screen gap-20 mx-3 md:mx-0 mt-5 md:mt-0
     "
     >
@@ -13,10 +14,16 @@ const LoginPage = () => {
           textSize="text-3xl md:text-5xl"
         />
         <div className="flex flex-col items-center justify-center gap-4">
-          <h1 className="text-3xl font-thin text-grey-dark uppercase text-center">
+          <h1
+            className="text-3xl font-thin text-grey-dark uppercase text-center"
+            data-testid="lp-title"
+          >
             Login
           </h1>
-          <p className="text-lg text-gray-500 text-center w-full max-w-md font-thin">
+          <p
+            className="text-lg text-gray-500 text-center w-full max-w-md font-thin"
+            data-testid="lp-description"
+          >
             Stay organized and productive. Log in to manage your tasks
             effortlessly!
           </p>

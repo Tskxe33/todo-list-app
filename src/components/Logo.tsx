@@ -11,7 +11,7 @@ const Logo = ({
   textSize = "text-base sm:text-3xl",
 }: Props) => {
   return (
-    <div className="flex items-center gap-2 sm:gap-5">
+    <div className="flex items-center gap-2 sm:gap-5" data-testid="logo">
       <Link to="/">
         <FaListCheck className={`${iconSize} text-primary`} />
       </Link>

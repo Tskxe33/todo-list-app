@@ -17,7 +17,10 @@ const LoginForm = () => {
   } = useLoginUser();
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 w-full max-w-md">
+    <div
+      className="flex flex-col items-center justify-center gap-4 w-full max-w-md"
+      data-testid="login-form"
+    >
       <div className="relative w-full">
         <input
           placeholder="e.g: joe@doe.com"
