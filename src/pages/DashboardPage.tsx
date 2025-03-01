@@ -17,6 +17,7 @@ const DashboradPage = () => {
   const { isOpen } = useCreateTaskModalStore();
   const { sortedTasks, filteredTasks } = useGetFilteredTasks();
   const { isOpen: isOpenConfirmationModal } = useConfirmationModalStore();
+
   const renderContent = () => {
     if (!tasks.length) {
       return (
@@ -43,7 +44,10 @@ const DashboradPage = () => {
     <div className="flex flex-col items-center justify-center">
       <div className="w-full lg:w-1/2 px-2 lg:px-0">
         <ActionButtons />
-        <div className="flex flex-row items-center gap-2 cursor-pointer py-4">
+        <div
+          className="flex flex-row items-center gap-2 cursor-pointer py-4"
+          data-testid="filters"
+        >
           <FilterDropDown
             buttonText="Filter"
             icon={<IoFilterOutline size={24} color="#3d475c" />}
@@ -63,7 +67,7 @@ const DashboradPage = () => {
         {renderContent()}
 
         {tasks.length > 0 && filteredTasks.length > 0 && (
-          <p className="text-xs text-gray-400 mt-1">
+          <p className="text-xs text-gray-400 mt-1" data-testid="ordering-text">
             ⚠ Only order ascending is available for ordering
           </p>
         )}

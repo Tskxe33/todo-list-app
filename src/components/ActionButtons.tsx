@@ -41,7 +41,7 @@ const ActionButtons = () => {
   };
 
   return (
-    <div className="flex justify-between my-5">
+    <div className="flex justify-between my-5" data-testid="action-buttons">
       <div className="flex flex-col gap-4">
         <CustomButton
           text="Create Task"
